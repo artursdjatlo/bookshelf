@@ -10,7 +10,9 @@
         <div class="w3-bar w3-black" th:fragment="main">
             <a href="/" class="w3-bar-item w3-button">Home</a>
             <a href="mybooks.html" class="w3-bar-item w3-button">My Books</a>
-            <a href="#" class="w3-bar-item w3-button w3-right">Log in</a>
+            <a href="/profile" class="w3-bar-item w3-button w3-right" th:if="${currentUser == null}">Log in</a>
+            <a href="/logout" class="w3-bar-item w3-button w3-right" th:if="${currentUser != null}">Log out</a>
+            <a href="/profile" class="w3-bar-item w3-button w3-right" th:if="${currentUser != null}" th:text="${currentUser.fullName}">User Name</a>
         </div>
         
     </body>

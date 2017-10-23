@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Bookshelf</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>   
+    </head>
+    <body>
+
+        <div th:replace="fragments/menu :: main"></div>
+
+        <div class="w3-container w3-margin">
+
+            <form class="w3-row-padding" action="/" th:action="@{/login}" method="post">
+                <div>
+                    <label>username</label>
+                    <input type="text" class="w3-input w3-border" name="email"/>
+                </div>
+                <div>
+                    <label>password</label>
+                    <input type="password" class="w3-input w3-border" name="password"/>
+                </div>
+                <div>
+                    <button class="w3-button w3-black">Login</button>
+                </div>
+            </form>
+            <a href="#" th:href="@{/register}">Register</a>
+        </div>
+    </body>
+</html>

@@ -14,7 +14,7 @@
             <form class="w3-row-padding" action="/" th:action="@{/}" method="post">
                 <button class="w3-button w3-border w3-green w3-right" style="width:100px">Search</button>
                 <div class="w3-rest">
-                    <input type="text" class="w3-input w3-border" name="term"/>
+                    <input type="text" class="w3-input w3-border" name="term" th:value="${term}"/>
                 </div>
             </form>
 

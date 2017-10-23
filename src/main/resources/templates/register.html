@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Bookshelf</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>   
+    </head>
+    <body>
+
+        <div th:replace="fragments/menu :: main"></div>
+
+        <div class="w3-container w3-margin">
+            <div th:if="${successMessage != null}" class="w3-panel w3-green">
+                <p th:text="${successMessage}"/>
+            </div>
+            <form class="w3-row-padding" action="#" th:action="@{/register}" method="post" th:object="${user}">
+                <input type="hidden" th:field="*{id}" th:if="${user.id != null}"/>
+                <div>
+                    <label>Full name</label>
+                    <div class="w3-container w3-red" th:if="${#fields.hasErrors('fullName')}">
+                        <p th:errors="*{fullName}"></p>
+                    </div>
+                    <input type="text" class="w3-input w3-border" th:field="*{fullName}"/>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <div class="w3-container w3-red" th:if="${#fields.hasErrors('email')}">
+                        <p th:errors="*{email}"></p>
+                    </div>
+                    <input type="email" class="w3-input w3-border" th:field="*{email}"/>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <div class="w3-container w3-red" th:if="${#fields.hasErrors('password')}">
+                        <p th:errors="*{password}"></p>
+                    </div>
+                    <input type="password" class="w3-input w3-border" th:field="*{password}"/>
+                </div>
+                <div>
+                    <label>Repeat password</label>
+                    <div class="w3-container w3-red" th:if="${#fields.hasErrors('password2')}">
+                        <p th:errors="*{password2}"></p>
+                    </div>
+                    <input type="password" class="w3-input w3-border" th:field="*{password2}"/>
+                </div>
+                <div>
+                    <button class="w3-button w3-black" th:if="${user.id == null}">Register</button>
+                    <button class="w3-button w3-black" th:if="${user.id != null}">Save</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -10,6 +10,7 @@
         <div th:replace="fragments/menu :: main"></div>
 
         <div class="w3-container w3-margin">
+            <a hrem="#" th:href="@{/edit-book(bookId=${book.id})}">edit</a>
             <div class="w3-row-padding">
                 <h1 class="w3-col s12" th:text="${book.title}">La Geometria Mar</h1>
             </div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Bookshelf</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>   
+    </head>
+    <body>
+
+        <div th:replace="fragments/menu :: main"></div>
+
+        <form action="/edit-book.html" th:action="@{/edit-book}" method="post" th:object="${book}">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="w3-container w3-margin">
+                <div class="w3-row-padding">
+                    <div class="w3-col l4 m6 s12">
+                        <img src="http://via.placeholder.com/300x300" style="width:100%"/>
+                    </div>
+                    <div class="w3-col l8 m6 s12">
+                        <div>
+                            <label class="w3-text-grey">Title</label>
+                            <div class="w3-container w3-red" th:if="${#fields.hasErrors('title')}">
+                                <p th:errors="*{title}"></p>
+                            </div>
+                            <input class="w3-input w3-border" type="text" th:field="*{title}"/>
+                        </div>
+                        <div class="w3-margin-top">
+                            <label class="w3-text-grey">Author</label>
+                            <div class="w3-container w3-red" th:if="${#fields.hasErrors('author')}">
+                                <p th:errors="*{author}"></p>
+                            </div>
+                            <input class="w3-input w3-border" type="text" th:field="*{author}"/>
+                        </div>
+                        <div class="w3-margin-top">
+                            <label class="w3-text-grey">ISBN</label>
+                            <div class="w3-container w3-red" th:if="${#fields.hasErrors('isbn')}">
+                                <p th:errors="*{isbn}"></p>
+                            </div>
+                            <input class="w3-input w3-border" type="text" th:field="*{isbn}"/>
+                        </div>
+                        <div class="w3-margin-top">
+                            <label class="w3-text-grey">Year</label>
+                            <div class="w3-container w3-red" th:if="${#fields.hasErrors('year')}">
+                                <p th:errors="*{year}"></p>
+                            </div>
+                            <input class="w3-input w3-border" type="text" th:field="*{year}"/>
+                        </div>
+                        <div class="w3-margin-top">
+                            <label class="w3-text-grey">Description:</label>
+                            <div class="w3-container w3-red" th:if="${#fields.hasErrors('description')}">
+                                <p th:errors="*{description}"></p>
+                            </div>
+                            <textarea class="w3-input w3-border" th:field="*{description}" rows="5"></textarea>
+                        </div>                   
+                        <div class="w3-margin-top">
+                            <button class="w3-button w3-red">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
